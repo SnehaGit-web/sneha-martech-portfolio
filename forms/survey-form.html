@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loopwork — Team Workflow Needs Survey</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #F0EEE7;
+    color: #1E2A45;
+    line-height: 1.6;
+    padding: 48px 16px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .brand-mark { width: 26px; height: 26px; background: #D4A24C; border-radius: 6px; }
+  .brand-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 18px; }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 44px 40px;
+    box-shadow: 0 1px 3px rgba(30,42,69,0.06), 0 8px 24px rgba(30,42,69,0.06);
+  }
+
+  .eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #4C8C86;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 12px;
+  }
+  .intro {
+    color: #5A5A5A;
+    font-size: 15px;
+    margin-bottom: 8px;
+    max-width: 46ch;
+  }
+  .meta {
+    color: #9A9A9A;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  fieldset {
+    border: none;
+    margin-bottom: 28px;
+  }
+  legend {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #1E2A45;
+    margin-bottom: 4px;
+    padding: 0;
+  }
+  .required { color: #C4634B; }
+  .field-help {
+    font-size: 13px;
+    color: #9A9A9A;
+    margin-bottom: 12px;
+  }
+
+  label.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E2A45;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 15px;
+    color: #1E2A45;
+    padding: 12px 14px;
+    border: 1.5px solid #E5E1D8;
+    border-radius: 8px;
+    background: #FCFBF9;
+    transition: border-color 0.15s ease;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #D4A24C;
+    background: #FFFFFF;
+  }
+  textarea { resize: vertical; min-height: 90px; }
+
+  .field-block { margin-bottom: 18px; }
+
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .radio-option, .checkbox-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1.5px solid #E5E1D8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .radio-option:hover, .checkbox-option:hover {
+    border-color: #D4A24C;
+    background: #FCFBF9;
+  }
+  .radio-option input, .checkbox-option input {
+    margin-top: 3px;
+    accent-color: #D4A24C;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .radio-option span, .checkbox-option span {
+    font-size: 14.5px;
+    color: #1E2A45;
+  }
+
+  .scale-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .scale-option {
+    flex: 1;
+    text-align: center;
+  }
+  .scale-option input { display: none; }
+  .scale-option label {
+    display: block;
+    padding: 12px 4px;
+    border: 1.5px solid #E5E1D8;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5A5A5A;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .scale-option input:checked + label {
+    border-color: #D4A24C;
+    background: #D4A24C;
+    color: #1E2A45;
+  }
+  .scale-caption {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #9A9A9A;
+    margin-top: 6px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1E2A45;
+    background: #D4A24C;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .submit-btn:hover { background: #C6923F; }
+
+  .privacy-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: #9A9A9A;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 32px 24px; }
+    .scale-row { flex-wrap: wrap; }
+    .scale-option { flex: 1 1 30%; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">Loopwork</div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Product Research</p>
+      <h1>Help us understand how your team actually works</h1>
+      <p class="intro">Five minutes of your time shapes what we build next. Every response goes straight to our product and sales teams.</p>
+      <p class="meta">Takes ~4 minutes · No account required</p>
+
+      <form action="#" method="POST">
+
+        <div class="field-block">
+          <label class="field-label" for="name">Full name <span class="required">*</span></label>
+          <input type="text" id="name" name="full_name" placeholder="Jordan Lee" required>
+        </div>
+
+        <div class="field-block">
+          <label class="field-label" for="email">Work email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="jordan@company.com" required>
+        </div>
+
+        <div class="field-block">
+          <label class="field-label" for="company">Company name</label>
+          <input type="text" id="company" name="company" placeholder="Acme Inc.">
+        </div>
+
+        <div class="field-block">
+          <label class="field-label" for="team-size">Team size</label>
+          <select id="team-size" name="team_size">
+            <option value="">Select one</option>
+            <option value="1-10">1–10</option>
+            <option value="11-50">11–50</option>
+            <option value="51-200">51–200</option>
+            <option value="201-500">201–500</option>
+            <option value="500+">500+</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>What's your biggest challenge managing team projects? <span class="required">*</span></legend>
+          <p class="field-help">Select the one that fits best</p>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="biggest_challenge" value="visibility" required>
+              <span>Lack of visibility into what's actually in progress</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="biggest_challenge" value="tool_sprawl">
+              <span>Too many disconnected tools (chat, docs, tasks all separate)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="biggest_challenge" value="missed_deadlines">
+              <span>Deadlines slipping without early warning</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="biggest_challenge" value="reporting">
+              <span>Manually pulling together status updates for leadership</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="biggest_challenge" value="other">
+              <span>Something else</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Which tools does your team currently use? </legend>
+          <p class="field-help">Select all that apply</p>
+          <div class="checkbox-group">
+            <label class="checkbox-option">
+              <input type="checkbox" name="tools[]" value="slack">
+              <span>Slack or Microsoft Teams</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="tools[]" value="spreadsheets">
+              <span>Spreadsheets (Excel / Google Sheets)</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="tools[]" value="pm_tool">
+              <span>A dedicated project management tool</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="tools[]" value="email">
+              <span>Mostly email threads</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="tools[]" value="none">
+              <span>No consistent system — it varies by person</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How likely are you to recommend your current process to another team lead?</legend>
+          <div class="scale-row">
+            <div class="scale-option"><input type="radio" id="s1" name="nps" value="1"><label for="s1">1</label></div>
+            <div class="scale-option"><input type="radio" id="s2" name="nps" value="2"><label for="s2">2</label></div>
+            <div class="scale-option"><input type="radio" id="s3" name="nps" value="3"><label for="s3">3</label></div>
+            <div class="scale-option"><input type="radio" id="s4" name="nps" value="4"><label for="s4">4</label></div>
+            <div class="scale-option"><input type="radio" id="s5" name="nps" value="5"><label for="s5">5</label></div>
+          </div>
+          <div class="scale-caption">
+            <span>Not likely</span>
+            <span>Very likely</span>
+          </div>
+        </fieldset>
+
+        <div class="field-block">
+          <label class="field-label" for="comments">Anything else you'd want a tool like this to solve?</label>
+          <textarea id="comments" name="comments" placeholder="Optional — tell us in your own words"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit response</button>
+        <p class="privacy-note">Your answers are used for product research only and never sold to third parties.</p>
+
+      </form>
+    </div>
+
+  </div>
+</body>
+</html>
