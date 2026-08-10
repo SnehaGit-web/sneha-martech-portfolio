@@ -1,8 +1,33 @@
 # Sneha Ann George — Marketing Technology Portfolio
 
-Hands-on samples of marketing automation, CRM, and lifecycle email work, built to demonstrate practical skills alongside my HubSpot certifications (HubSpot Marketing Hub Software Certified, HubSpot Inbound Marketing Certified).
+Hands-on samples of marketing automation, CRM, and AI-powered systems work, built to demonstrate practical skills alongside my HubSpot certifications (HubSpot Marketing Hub Software Certified, HubSpot Inbound Marketing Certified) and Salesforce Administrator certification preparation (Salesforce Trailhead, 21 badges).
 
 **Contact:** snehaanngeorge.ca@gmail.com · [LinkedIn](https://linkedin.com/in/sneha-ann-george)
+
+---
+
+## Case Study: AI Lead Follow-Up Assistant
+
+A working tool that reads CRM lead data, autonomously decides which leads need follow-up based on engagement rules, and drafts personalized outreach emails by calling the Claude API directly in code — not through a chat interface.
+
+This is built to demonstrate the specific distinction between *using* AI conversationally and *building with* AI programmatically: the tool makes real decisions (which leads qualify, which get flagged for human review, which are skipped as too new) and generates contextual output as part of an automated process a team could actually run.
+
+### What's in this case study
+
+| File | Purpose |
+|---|---|
+| [`lead-followup-assistant/lead_followup_assistant.py`](lead-followup-assistant/lead_followup_assistant.py) | Main script — reads leads, applies decision rules, calls the Claude API to draft emails |
+| [`lead-followup-assistant/sample_leads.csv`](lead-followup-assistant/sample_leads.csv) | Sample CRM lead export used to test the tool |
+| [`lead-followup-assistant/SAMPLE_RUN.md`](lead-followup-assistant/SAMPLE_RUN.md) | Unedited output from an actual successful run, showing real drafted emails |
+| [`lead-followup-assistant/README.md`](lead-followup-assistant/README.md) | Full technical writeup of the project |
+
+### Why this demonstrates building with AI, not just using it
+
+- **Programmatic API usage** — the script calls `anthropic.Anthropic().messages.create()` directly in code, with no chat interface involved.
+- **Autonomous decision-making** — the tool applies real business rules to decide *which* leads to act on (skipping brand-new leads, flagging cold leads for human review, only drafting for leads that qualify), not just generating text on request.
+- **Reusable, not one-off** — any marketer could point this script at their own exported lead list and get the same automated triage and drafting.
+
+See the [full case study README](lead-followup-assistant/README.md) for technical details, and [SAMPLE_RUN.md](lead-followup-assistant/SAMPLE_RUN.md) for real, unedited output from a successful run.
 
 ---
 
@@ -22,8 +47,6 @@ A self-directed sample project: coded responsive HTML emails, lifecycle/behavior
 | [`forms/survey-form.html`](forms/survey-form.html) | Product research / sales-enablement survey | Lead generation |
 
 ### Why these four pieces together
-
-This is modeled as a small lifecycle marketing program rather than four disconnected samples:
 
 - The **survey form** represents the kind of market-research capture used to inform segmentation and messaging — the same pattern used for structured lead data collection from sales agents in a past role.
 - The **welcome email** covers the acquisition/onboarding trigger.
